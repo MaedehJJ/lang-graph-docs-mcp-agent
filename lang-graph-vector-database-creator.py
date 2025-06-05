@@ -205,13 +205,3 @@ split_docs = split_documents(documents)
 vectorstore = create_vectorstore(split_docs)
 # Create retriever to get relevant documents (k=3 means return top 3 matches)
 retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
-
-# Get relevant documents for the query
-query = "What is LangGraph?"
-relevant_docs = retriever.invoke(query)
-print(f"Retrieved {len(relevant_docs)} relevant documents")
-
-for d in relevant_docs:
-    print(d.metadata["source"])
-    print(d.page_content[0:500])
-    print("\n--------------------------------\n")
